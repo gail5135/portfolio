@@ -1,0 +1,19 @@
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chip {
+  padding: 0.15rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg-subtle);
+  color: var(--fg-muted);
+  font-size: 0.78rem;
+  line-height: 1.6;
+  white-space: nowrap;
+}

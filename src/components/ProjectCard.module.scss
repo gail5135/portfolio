@@ -1,0 +1,45 @@
+.project {
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--border);
+
+  &:first-child {
+    border-top: 0;
+    padding-top: 0.5rem;
+  }
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.period {
+  flex: none;
+  color: var(--fg-faint);
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.role {
+  margin: 0.2rem 0 0;
+  color: var(--fg-muted);
+  font-size: 0.85rem;
+}
+
+.stack {
+  margin-top: 0.75rem;
+}
+
+.body {
+  margin-top: 0.9rem;
+  font-size: 0.95rem;
+}

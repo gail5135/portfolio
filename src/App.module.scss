@@ -1,0 +1,11 @@
+.page {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.skills {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
