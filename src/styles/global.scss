@@ -7,19 +7,13 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   --anchor-offset: 5rem;
   scroll-padding-top: var(--anchor-offset);
 }
 
 @media (min-width: 1100px) {
   html { --anchor-offset: 0px; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
 }
 
 body {
