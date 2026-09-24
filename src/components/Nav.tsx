@@ -104,12 +104,13 @@ export function Nav({ items }: { items: NavItem[] }) {
         <p className={styles.caption}>ON THIS PAGE</p>
         <ul>
           {items.map((item) => {
+            const targetId = item.children?.[0]?.id ?? item.id;
             const containsActive = item.id === active || item.children?.some((child) => child.id === active);
             return (
               <li key={item.id}>
                 <div className={styles.row}>
-                  <a href={`#${item.id}`} className={containsActive ? styles.active : undefined}
-                    aria-current={active === item.id ? 'location' : undefined} onClick={(event) => navigate(event, item.id)}>{item.label}</a>
+                  <a href={`#${targetId}`} className={containsActive ? styles.active : undefined}
+                    aria-current={active === item.id ? 'location' : undefined} onClick={(event) => navigate(event, targetId)}>{item.label}</a>
                   {!!item.children?.length && <button aria-label={`${item.label} 하위 목차`}
                     aria-expanded={!!expanded[item.id]} aria-controls={`nav-${item.id}`}
                     onClick={() => setExpanded((value) => ({ ...value, [item.id]: !value[item.id] }))}>
