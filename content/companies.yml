@@ -1,10 +1,13 @@
-# 회사 정보. 재직 기간이 바뀌면 여기서 고친다.
-# id 는 content/experience/*.md 의 frontmatter 에 있는 company 값과 짝을 이룬다.
+# 회사 정보. current: true이면 startMonth부터 현재 한국 날짜까지 월 단위로 계산한다.
+# startMonth는 따옴표로 감싼 YYYY-MM 형식. 퇴사 시 current를 false로 바꾸고 period와 duration을 기입한다.
+# id 는 content/timeline/*.md 의 frontmatter 에 있는 company 값과 짝을 이룬다.
 
 - id: fasoo-ai
   name: 주식회사 파수에이아이
   period: 2021.05 – 재직중
-  duration: 5년 4개월
+  startMonth: "2021-05"
+  current: true
+  website: https://www.fasoo.ai/
   employmentType: 정규직
   position: 프론트엔드 개발 전임
 
@@ -12,5 +15,6 @@
   name: (주)진학어플라이
   period: 2020.08 – 2021.02
   duration: 7개월
+  website: https://company.jinhak.com/
   employmentType: 정규직
   position: 풀스택 개발 PD

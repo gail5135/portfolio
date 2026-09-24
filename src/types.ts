@@ -4,6 +4,9 @@ export interface CompanyMeta {
   name: string;
   period: string;
   duration?: string;
+  startMonth?: string;
+  current?: boolean;
+  website?: string;
   employmentType?: string;
   position?: string;
 }
