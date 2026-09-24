@@ -1,7 +1,8 @@
 ---
 name: 이해창
 title: React 개발자
-totalExperience: 경력 5년 11개월
+# auto: companies.yml의 회사별 경력을 합산해 페이지를 열 때 계산
+totalExperience: auto
 email: gail5135@gmail.com
 github: https://github.com/gail5135
 ---

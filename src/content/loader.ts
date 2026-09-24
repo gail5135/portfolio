@@ -1,3 +1,5 @@
+import { getTotalExperience } from '../utils/companyDuration';
+
 import profileDoc from '/content/profile.md';
 import companiesData from '/content/companies.yml';
 import aiDoc from '/content/ai.md';
@@ -29,7 +31,16 @@ const experienceModules = import.meta.glob('/content/experience/*.md', {
   eager: true,
 }) as Record<string, { default: Doc }>;
 
-export const profile = profileDoc as unknown as Doc<ProfileMeta>;
+const sourceProfile = profileDoc as unknown as Doc<ProfileMeta>;
+export const profile: Doc<ProfileMeta> = {
+  ...sourceProfile,
+  meta: {
+    ...sourceProfile.meta,
+    totalExperience: sourceProfile.meta.totalExperience === 'auto'
+      ? getTotalExperience(parseCompanyMeta())
+      : sourceProfile.meta.totalExperience,
+  },
+};
 export const ai = aiDoc;
 export const education = educationDoc;
 export const activities = activitiesDoc;
