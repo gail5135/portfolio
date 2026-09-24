@@ -63,12 +63,12 @@ export default function App() {
       <div className={styles.page}>
         <Hero meta={profile.meta} />
         <main id="main">
-          <Section id="about" title="About">
+          <div id="about" className={styles.summary} tabIndex={-1}>
+            <h2>Summary</h2>
+            <Prose html={summary.bodyHtml} />
+          </div>
+          <Section id="about-details" title="About">
             <Prose html={profile.bodyHtml} />
-            <div className={styles.summary}>
-              <h3>Summary</h3>
-              <Prose html={summary.bodyHtml} />
-            </div>
           </Section>
 
           <Section id="experience" title="Work Experience">
