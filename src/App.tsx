@@ -9,6 +9,7 @@ import { Prose } from './components/Prose';
 import { Section } from './components/Section';
 import {
   ai,
+  activities,
   education,
   links,
   loadExperiences,
@@ -26,6 +27,7 @@ const NAV_ITEMS: NavItem[] = [
   { id: 'timeline', label: 'Timeline' },
   { id: 'skills', label: 'Skills' },
   { id: 'education', label: 'Education' },
+  { id: 'activities', label: 'Activities' },
   { id: 'projects', label: 'Projects' },
 ];
 
@@ -73,6 +75,10 @@ export default function App() {
 
           <Section id="education" title="Education">
             <Prose html={education.bodyHtml} />
+          </Section>
+
+          <Section id="activities" title="교내 활동">
+            <Prose html={activities.bodyHtml} />
           </Section>
 
           <Section id="projects" title="Personal Projects">

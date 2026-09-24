@@ -16,6 +16,7 @@ GitHub 웹에서 파일을 열고 연필 아이콘을 눌러 고친 뒤 커밋�
 | `ai.md` | AI 활용 경험 |
 | `skills.md` | Skills, 언어 |
 | `education.md` | Education |
+| `activities.md` | 교내 활동 — 동아리 및 학생회 |
 | `links.md` | Personal Projects |
 
 두 폴더의 차이:

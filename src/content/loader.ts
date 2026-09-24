@@ -3,6 +3,7 @@ import companiesData from '/content/companies.yml';
 import aiDoc from '/content/ai.md';
 import skillsDoc from '/content/skills.md';
 import educationDoc from '/content/education.md';
+import activitiesDoc from '/content/activities.md';
 import linksDoc from '/content/links.md';
 
 import type {
@@ -31,6 +32,7 @@ const experienceModules = import.meta.glob('/content/experience/*.md', {
 export const profile = profileDoc as unknown as Doc<ProfileMeta>;
 export const ai = aiDoc;
 export const education = educationDoc;
+export const activities = activitiesDoc;
 export const links = linksDoc;
 
 export const skills = {
