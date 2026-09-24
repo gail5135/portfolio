@@ -2,3 +2,4 @@
 - [phaser.js 기반 웹 리듬 게임](https://github.com/gail5135/HC_RhythmGame)
 - [phaser.js 기반 웹 3라인 종스크롤 레이싱 게임](https://github.com/gail5135/KakaoSnackGame)
 - [디스코드 반응 기록 챗봇](https://github.com/gail5135/discord-message-reaction-summary-bot)
+- [디스코드 채널 메시지 번역 봇](https://github.com/gail5135/discord-target-channel-translation-bot)
