@@ -1,5 +1,6 @@
 ---
 name: 이해창
+hanjaName: 李海昌
 englishName: Hae-chang Lee
 title: React 개발자
 # auto: companies.yml의 회사별 경력을 합산해 페이지를 열 때 계산

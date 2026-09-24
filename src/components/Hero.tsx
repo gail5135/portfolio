@@ -7,7 +7,8 @@ export function Hero({ meta }: { meta: ProfileMeta }) {
     <header className={styles.hero}>
       <h1 className={styles.name}>
         <span>{meta.name}</span>{' '}
-        {meta.englishName && <span className={styles.englishName} lang="en">{meta.englishName}</span>}
+        {meta.hanjaName && <span className={styles.secondaryName} lang="ko-Hani">{meta.hanjaName}</span>}
+        {meta.englishName && <span className={styles.secondaryName} lang="en">{meta.englishName}</span>}
       </h1>
       <p className={styles.title}>
         {meta.title}
