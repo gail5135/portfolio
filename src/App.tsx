@@ -64,11 +64,11 @@ export default function App() {
       <div id="home" className={styles.page} tabIndex={-1}>
         <Hero meta={profile.meta} />
         <main id="main">
-          <div id="about" className={styles.summary} tabIndex={-1}>
+          <div id="summary" className={styles.summary} tabIndex={-1}>
             <h2>Summary</h2>
             <Prose html={summary.bodyHtml} />
           </div>
-          <Section id="about-details" title="About">
+          <Section id="about" title="About">
             <Prose html={profile.bodyHtml} />
           </Section>
 
