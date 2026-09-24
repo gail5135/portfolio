@@ -100,8 +100,14 @@ export default function App() {
 
           <Section id="skills" title="Skills">
             <div className={styles.skills}>
-              <Chips items={skills.items} label="보유 기술" />
-              <Prose html={skills.bodyHtml} />
+              <div>
+                <h3 className={styles.skillHeading}>개발</h3>
+                <Chips items={skills.items} label="개발 기술" />
+              </div>
+              <div>
+                <h3 className={styles.skillHeading}>언어</h3>
+                <Prose html={skills.bodyHtml} />
+              </div>
             </div>
           </Section>
 
