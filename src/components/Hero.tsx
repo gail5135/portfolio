@@ -11,10 +11,14 @@ export function Hero({ meta }: { meta: ProfileMeta }) {
         {meta.totalExperience && <span className={styles.experience}>{meta.totalExperience}</span>}
       </p>
       <div className={styles.contact}>
-        {meta.email && <a href={`mailto:${meta.email}`}>{meta.email}</a>}
+        {meta.email && (
+          <a href={`mailto:${meta.email}`}>
+            <span aria-hidden="true">✉️</span> {meta.email}
+          </a>
+        )}
         {meta.github && (
           <a href={meta.github} target="_blank" rel="noreferrer noopener">
-            GitHub
+            <span aria-hidden="true">🧑🏻‍💻</span> GitHub
           </a>
         )}
       </div>
