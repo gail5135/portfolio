@@ -8,7 +8,7 @@ export function ExperienceNote({ note }: { note: Note }) {
   const hasMeta = Boolean(note.context || note.period);
 
   return (
-    <article className={styles.note}>
+    <article id={`experience-${note.slug}`} className={styles.note} tabIndex={-1}>
       <h3 className={styles.title}>{note.title}</h3>
       {hasMeta && (
         <p className={styles.meta}>

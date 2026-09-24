@@ -43,3 +43,9 @@
   margin-top: 0.9rem;
   font-size: 0.95rem;
 }
+
+.body > p:first-child, .body li { color: var(--fg); }
+@media (max-width: 600px) {
+  .head { flex-direction: column; align-items: flex-start; }
+  .period { order: -1; }
+}

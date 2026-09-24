@@ -1,8 +1,8 @@
 ---
 company: fasoo-ai
 title: 고객지원 채팅 서비스 개발
-period: 2021.05 – 2021.10
-role: 풀 스택 개발 인턴
+period: "2021.05 – 2021.10"
+role: 풀스택 개발 인턴
 stack: [jQuery, AngularJS]
 ---
 

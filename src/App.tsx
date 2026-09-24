@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Chips } from './components/Chips';
 import { CompanyBlock } from './components/CompanyBlock';
 import { EmptyNote } from './components/EmptyNote';
@@ -48,6 +49,10 @@ const timelineYears = Array.from(
 ).sort(([a], [b]) => b - a);
 
 export default function App() {
+  useEffect(() => {
+    const id = decodeURIComponent(window.location.hash.slice(1));
+    if (id) document.getElementById(id)?.scrollIntoView({ behavior: 'instant' });
+  }, []);
   return (
     <>
       <a className="skip-link" href="#main">

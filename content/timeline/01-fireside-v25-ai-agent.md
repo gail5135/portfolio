@@ -1,15 +1,15 @@
 ---
 company: fasoo-ai
-title: Fireside v2.5 TextToSQL Agent 및 AI 기능 개발
-period: 2026.05 – 2026.07
-role: 프론트 엔드 개발 전임
+title: Text-to-SQL Agent 대화 UI 및 운영 콘솔 개발
+period: "2026.05 – 2026.08"
 stack: [React, SSE, Markdown]
 ---
 
-- SSE 기반 AI 스트리밍 메시지 UI 구현
-- 마크다운 메시지 렌더링 및 기존 채팅 메시지 UX와 통합
-- AI 피드백 아이콘, 피드백 모달, 피드백 API 연동 구현
-- 관리자 콘솔 내 AI 기본 기능 관리 화면 API 연동
-- AI Agent 피드백 로그 목록 및 상세 화면 개발
-- URL 모아보기 설정 ON/OFF 및 관련 클라이언트 UI 개발
-- Agent Room 프로필, 상태 label, 검색 하이라이트, 피드백 상세 QA 이슈 수정
+사용자가 AI 응답을 확인하고 관리자가 Agent의 데이터와 질의응답 기록을 관리할 수 있도록 프론트엔드를 개발했습니다.
+
+- SSE 응답 표시와 진행·중지·오류 상태 UI 구현
+- Agent에 사용할 DB 등록 및 테이블·컬럼 설명 보강 화면 구현
+- 질의응답 로그 검색·상세 조회와 사용자 피드백 UI 및 API 연동
+- Markdown 렌더링 적용 및 한국어 조사 결합 시 서식 오류 보완
+
+[AI 기능 개발과 검증 과정 보기](#ai)

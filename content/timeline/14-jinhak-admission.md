@@ -1,7 +1,7 @@
 ---
 company: jinhak
 title: 대학교·대학원 원서접수 서비스 개발
-period: 2020.08 – 2021.02
+period: "2020.08 – 2021.02"
 role: 개발자 사원
 ---
 

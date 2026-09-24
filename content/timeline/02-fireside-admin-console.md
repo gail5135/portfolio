@@ -1,14 +1,13 @@
 ---
 company: fasoo-ai
-title: Fireside v2.4/v2.5 관리자 콘솔 고도화
-period: 2026.03 – 2026.06
-role: 프론트 엔드 개발 전임
+title: 관리자 콘솔 공통화 및 운영 기능 고도화
+period: "2025.12 – 2026.06"
+stack: [React, TypeScript, FDS]
 ---
 
-- 사용자 내보내기, 관리자 변경, 로그 테이블 사용자 정보 Popover/Card 구현
-- 정책-일반 페이지 FDS 적용 및 UI 깨짐 수정
-- SearchToolbar, PaginationToolbar, Table, Modal 공통 컴포넌트 적용
-- Room, 로그, 사용자, 관리자, 외부 시스템, 외부 챗봇 서버 목록 화면 개선
-- 검색 기간, 검색 키워드, 페이지네이션, 필터 유지 로직 개선
-- 관리자 콘솔 파일 서버 proxy 및 개발 환경 이슈 수정
-- AI 서비스 연동, 기본 기능 관리, 사용자 그룹, AI 피드백 로그 화면 개발
+반복되는 목록형 화면을 공통 컴포넌트로 정리하고 사용자·채팅방·정책 관리 기능을 개선했습니다.
+
+- Table·SearchToolbar·PaginationToolbar·Modal 공통 기반 구축 및 운영 화면 확대 적용
+- 검색 조건·필터·페이지 상태 유지 로직 개선
+- 사용자 내보내기, 관리자 변경, 로그 사용자 정보 조회 및 정책 화면 개발
+- 사내 디자인 시스템(FDS) 적용과 관리자 목록 윈도잉 구현
