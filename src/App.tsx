@@ -39,6 +39,7 @@ const timelineYears = Array.from(
 ).sort(([a], [b]) => b - a);
 
 const NAV_ITEMS: NavItem[] = [
+  { id: 'home', label: 'Home' },
   { id: 'about', label: 'About' },
   { id: 'experience', label: 'Experience', children: experiences.map((note) => ({ id: `experience-${note.slug}`, label: note.navLabel || note.title })) },
   { id: 'ai', label: 'AI' },
@@ -60,7 +61,7 @@ export default function App() {
         본문 바로가기
       </a>
       <Nav items={NAV_ITEMS} />
-      <div className={styles.page}>
+      <div id="home" className={styles.page} tabIndex={-1}>
         <Hero meta={profile.meta} />
         <main id="main">
           <div id="about" className={styles.summary} tabIndex={-1}>
