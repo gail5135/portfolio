@@ -29,3 +29,13 @@
   .sectionLinks { display: none; }
 }
 @media print { .page { margin: 0 auto; } }
+
+.summary {
+  margin-top: 2rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  h3 { margin: 0 0 1rem; font-size: 1rem; }
+  li + li { margin-top: 1rem; }
+}

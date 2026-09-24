@@ -17,6 +17,7 @@ import {
   loadTimeline,
   profile,
   skills,
+  summary,
 } from './content/loader';
 
 import styles from './App.module.scss';
@@ -64,6 +65,10 @@ export default function App() {
         <main id="main">
           <Section id="about" title="About">
             <Prose html={profile.bodyHtml} />
+            <div className={styles.summary}>
+              <h3>Summary</h3>
+              <Prose html={summary.bodyHtml} />
+            </div>
           </Section>
 
           <Section id="experience" title="Work Experience">

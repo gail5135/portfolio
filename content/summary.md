@@ -1,0 +1,6 @@
+---
+---
+
+- **웹과 데스크톱을 연결하는 제품 개발** — React 웹뷰·관리자 콘솔과 Electron 클라이언트를 개발하고, Windows·macOS의 딥 링크·잠금 모드·창 제어를 구현했습니다. [Electron 전환 경험](#experience-02-electron-client-migration)
+- **기존 제품에 AI 기능 통합** — SSE 스트리밍 응답·Markdown 메시지와 Text-to-SQL Agent 운영 화면을 개발해 사용자 대화부터 관리자 로그·피드백 확인까지 연결했습니다. [AI 기능 개발 경험](#ai)
+- **반복 작업과 유지보수 문제 개선** — 언어 리소스 관리 도구로 번역 문구 정비와 기능 개발의 병렬 진행을 지원하고, SVG Sprite 전환으로 아이콘 표현·스타일 제어·관리 규칙을 정비했습니다. [언어 리소스 협업 개선](#experience-01-language-resource-manager) · [SVG Sprite 전환](#experience-04-svg-sprite-migration)

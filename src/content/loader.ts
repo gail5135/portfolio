@@ -1,6 +1,7 @@
 import { getTotalExperience } from '../utils/companyDuration';
 
 import profileDoc from '/content/profile.md';
+import summaryDoc from '/content/summary.md';
 import companiesData from '/content/companies.yml';
 import aiDoc from '/content/ai.md';
 import skillsDoc from '/content/skills.md';
@@ -41,6 +42,7 @@ export const profile: Doc<ProfileMeta> = {
       : sourceProfile.meta.totalExperience,
   },
 };
+export const summary = summaryDoc;
 export const ai = aiDoc;
 export const education = educationDoc;
 export const activities = activitiesDoc;
