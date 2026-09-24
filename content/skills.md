@@ -11,6 +11,6 @@ skills:
   - GitLab
 ---
 
-**영어** 일상 회화 · TOEIC Speaking 130 / Level 6 (2021.03.27)
+**영어** TOEIC Speaking 130 / Level 6 (2021.03.27)
 
-**일본어** 일상 회화
+**일본어** 일상 회화 가능
