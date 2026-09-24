@@ -41,6 +41,7 @@ export interface Doc<TMeta = Record<string, unknown>> {
 
 export interface ProfileMeta {
   name: string;
+  englishName?: string;
   title: string;
   totalExperience?: string;
   email?: string;
