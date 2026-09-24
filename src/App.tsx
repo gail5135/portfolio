@@ -21,17 +21,6 @@ import {
 
 import styles from './App.module.scss';
 
-const NAV_ITEMS: NavItem[] = [
-  { id: 'about', label: 'About' },
-  { id: 'experience', label: 'Experience' },
-  { id: 'ai', label: 'AI' },
-  { id: 'timeline', label: 'Timeline' },
-  { id: 'skills', label: 'Skills' },
-  { id: 'education', label: 'Education' },
-  { id: 'activities', label: 'Activities' },
-  { id: 'projects', label: 'Projects' },
-];
-
 const experiences = loadExperiences();
 const companies = loadTimeline();
 const timelineYears = Array.from(
@@ -47,6 +36,17 @@ const timelineYears = Array.from(
     return years;
   }, new Map<number, { month: number; slug: string }>()),
 ).sort(([a], [b]) => b - a);
+
+const NAV_ITEMS: NavItem[] = [
+  { id: 'about', label: 'About' },
+  { id: 'experience', label: 'Experience', children: experiences.map((note) => ({ id: `experience-${note.slug}`, label: note.navLabel || note.title })) },
+  { id: 'ai', label: 'AI' },
+  { id: 'timeline', label: 'Timeline', children: timelineYears.map(([year, project]) => ({ id: `timeline-${project.slug}`, label: String(year) })) },
+  { id: 'skills', label: 'Skills' },
+  { id: 'education', label: 'Education' },
+  { id: 'activities', label: 'Activities' },
+  { id: 'projects', label: 'Projects' },
+];
 
 export default function App() {
   useEffect(() => {
