@@ -77,7 +77,7 @@ export default function App() {
             <Prose html={education.bodyHtml} />
           </Section>
 
-          <Section id="activities" title="교내 활동">
+          <Section id="activities" title="Activities">
             <Prose html={activities.bodyHtml} />
           </Section>
 
