@@ -2,8 +2,8 @@
 name: 이해창
 title: React 개발자
 totalExperience: 경력 5년 11개월
-email: ✉️ gail5135@gmail.com
-github: 🧑🏻‍💻 https://github.com/gail5135
+email: gail5135@gmail.com
+github: https://github.com/gail5135
 ---
 
 저는 Fireside B2B 메신저 제품을 중심으로 React 웹뷰, Electron 데스크톱 클라이언트,
