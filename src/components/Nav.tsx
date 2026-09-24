@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type MouseEvent } from 'react';
 import styles from './Nav.module.scss';
 
 export interface NavItem {
@@ -13,11 +13,14 @@ export function Nav({ items }: { items: NavItem[] }) {
   const [open, setOpen] = useState(false);
   const toggle = useRef<HTMLButtonElement>(null);
   const previousSection = useRef('');
+  const navigationTarget = useRef<string | null>(null);
+  const settleTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   useEffect(() => {
     let frame = 0;
     const update = () => {
       frame = 0;
+      if (navigationTarget.current) return;
       const section = [...items].reverse().find((item) =>
         (document.getElementById(item.id)?.getBoundingClientRect().top ?? Infinity) <= 112,
       ) ?? items[0];
@@ -32,17 +35,54 @@ export function Nav({ items }: { items: NavItem[] }) {
       }
     };
     const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+    // 클릭 이동 중에는 목적지를 강조하고, 스크롤이 멈춘 뒤 추적을 재개한다.
+    // 종료 시 바로 재계산하지 않아 화면 하단처럼 앵커 정렬이 제한된 곳도 선택을 유지한다.
+    const onScroll = () => {
+      if (navigationTarget.current) {
+        clearTimeout(settleTimer.current);
+        settleTimer.current = setTimeout(() => { navigationTarget.current = null; }, 160);
+      } else schedule();
+    };
+    const resumeTracking = () => {
+      if (!navigationTarget.current) return;
+      navigationTarget.current = null;
+      clearTimeout(settleTimer.current);
+      schedule();
+    };
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '].includes(event.key)) resumeTracking();
+    };
     schedule();
-    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('wheel', resumeTracking, { passive: true });
+    window.addEventListener('touchstart', resumeTracking, { passive: true });
+    window.addEventListener('pointerdown', resumeTracking, { passive: true });
+    window.addEventListener('keydown', onKeyDown);
     window.addEventListener('resize', schedule);
     return () => {
       cancelAnimationFrame(frame);
-      window.removeEventListener('scroll', schedule);
+      clearTimeout(settleTimer.current);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('wheel', resumeTracking);
+      window.removeEventListener('touchstart', resumeTracking);
+      window.removeEventListener('pointerdown', resumeTracking);
+      window.removeEventListener('keydown', onKeyDown);
       window.removeEventListener('resize', schedule);
     };
   }, [items]);
 
-  const navigate = (id: string) => {
+  const navigate = (event: MouseEvent<HTMLAnchorElement>, id: string) => {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    navigationTarget.current = id;
+    clearTimeout(settleTimer.current);
+    // 같은 위치를 클릭해 scroll 이벤트가 없는 경우에도 잠금을 해제한다.
+    settleTimer.current = setTimeout(() => { navigationTarget.current = null; }, 300);
+    setActive(id);
+    const section = items.find((item) => item.id === id || item.children?.some((child) => child.id === id));
+    if (section) {
+      previousSection.current = section.id;
+      setExpanded({ [section.id]: true });
+    }
     setOpen(false);
     requestAnimationFrame(() => document.getElementById(id)?.focus({ preventScroll: true }));
   };
@@ -69,7 +109,7 @@ export function Nav({ items }: { items: NavItem[] }) {
               <li key={item.id}>
                 <div className={styles.row}>
                   <a href={`#${item.id}`} className={containsActive ? styles.active : undefined}
-                    aria-current={active === item.id ? 'location' : undefined} onClick={() => navigate(item.id)}>{item.label}</a>
+                    aria-current={active === item.id ? 'location' : undefined} onClick={(event) => navigate(event, item.id)}>{item.label}</a>
                   {!!item.children?.length && <button aria-label={`${item.label} 하위 목차`}
                     aria-expanded={!!expanded[item.id]} aria-controls={`nav-${item.id}`}
                     onClick={() => setExpanded((value) => ({ ...value, [item.id]: !value[item.id] }))}>
@@ -79,7 +119,7 @@ export function Nav({ items }: { items: NavItem[] }) {
                 {!!item.children?.length && <ul id={`nav-${item.id}`} className={styles.children} hidden={!expanded[item.id]}>
                   {item.children.map((child) => <li key={child.id}>
                     <a href={`#${child.id}`} className={active === child.id ? styles.active : undefined}
-                      aria-current={active === child.id ? 'location' : undefined} onClick={() => navigate(child.id)}>{child.label}</a>
+                      aria-current={active === child.id ? 'location' : undefined} onClick={(event) => navigate(event, child.id)}>{child.label}</a>
                   </li>)}
                 </ul>}
               </li>
