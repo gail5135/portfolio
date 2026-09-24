@@ -31,6 +31,7 @@ GitHub 웹에서 파일을 열고 연필 아이콘을 눌러 고친 뒤 커밋�
 ```markdown
 ---
 title: 글 제목
+navLabel: 짧은 목차 이름
 context: Fireside v2.5 AI Agent
 period: 2026.05 – 2026.07
 tags: [성능, Electron]
@@ -96,3 +97,5 @@ stack: [React, Vite]
 
 머리말이 깨진 파일은 그 파일만 화면에서 빠지고 나머지는 정상 동작합니다.
 빌드 로그와 브라우저 콘솔에 어떤 파일이 왜 빠졌는지 나옵니다.
+
+Experience 상단 바로가기는 각 글에서 자동 생성됩니다. `navLabel`로 짧은 이름을 지정할 수 있으며, 없으면 `title`을 사용합니다.

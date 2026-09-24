@@ -67,6 +67,15 @@ export default function App() {
           </Section>
 
           <Section id="experience" title="Work Experience">
+            {experiences.length > 0 && (
+              <nav className={styles.sectionLinks} aria-label="경험 바로가기">
+                {experiences.map((note) => (
+                  <a key={note.slug} href={`#experience-${note.slug}`}>
+                    {note.navLabel || note.title}
+                  </a>
+                ))}
+              </nav>
+            )}
             {experiences.length > 0 ? (
               experiences.map((note) => <ExperienceNote key={note.slug} note={note} />)
             ) : (
@@ -79,7 +88,7 @@ export default function App() {
           </Section>
 
           <Section id="timeline" title="Work Timeline">
-            <nav className={styles.timelineYears} aria-label="경력 연도별 바로가기">
+            <nav className={styles.sectionLinks} aria-label="경력 연도별 바로가기">
               {timelineYears.map(([year, project]) => (
                 <a key={year} href={`#timeline-${project.slug}`}>{year}</a>
               ))}

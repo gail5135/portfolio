@@ -1,4 +1,5 @@
 ---
+navLabel: Electron 전환
 title: 팀의 개발 역량에 맞춘 Electron 클라이언트 전환
 tags: [Electron, 유지보수, 기술 선택]
 ---

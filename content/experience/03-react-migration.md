@@ -1,4 +1,5 @@
 ---
+navLabel: React 전환
 title: 레거시 프론트엔드 전환을 통해 배운 기술적 의사결정
 tags: [React, 레거시 전환, 기술 선택]
 ---

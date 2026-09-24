@@ -52,6 +52,7 @@ export interface LinkItem {
 /** content/experience/*.md 의 frontmatter — 인사이트/기억 기록 */
 export interface ExperienceMeta {
   title: string;
+  navLabel?: string;
   /** 어떤 프로젝트·상황에서 나온 이야기인지 */
   context?: string;
   period?: string;
