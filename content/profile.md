@@ -2,7 +2,7 @@
 name: 이해창
 hanjaName: 李海昌
 englishName: Hae-chang Lee
-title: React 개발자
+title: React, Electron 기반 프론트엔드 개발자
 # auto: companies.yml의 회사별 경력을 합산해 페이지를 열 때 계산
 totalExperience: auto
 email: gail5135@gmail.com
