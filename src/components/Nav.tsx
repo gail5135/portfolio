@@ -21,12 +21,14 @@ export function Nav({ items }: { items: NavItem[] }) {
     const update = () => {
       frame = 0;
       if (navigationTarget.current) return;
+      const anchorOffset = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+      const activationTop = anchorOffset + 32;
       const section = [...items].reverse().find((item) =>
-        (document.getElementById(item.id)?.getBoundingClientRect().top ?? Infinity) <= 112,
+        (document.getElementById(item.id)?.getBoundingClientRect().top ?? Infinity) <= activationTop,
       ) ?? items[0];
       if (!section) return;
       const child = [...(section.children ?? [])].reverse().find((item) =>
-        (document.getElementById(item.id)?.getBoundingClientRect().top ?? Infinity) <= 112,
+        (document.getElementById(item.id)?.getBoundingClientRect().top ?? Infinity) <= activationTop,
       );
       setActive(child?.id ?? section.id);
       if (previousSection.current !== section.id) {

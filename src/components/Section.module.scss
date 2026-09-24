@@ -1,5 +1,8 @@
 .section {
   margin-bottom: var(--gap-section);
+
+  // 마지막 섹션도 위쪽에 정렬할 수 있는 스크롤 공간을 확보한다.
+  &:last-child { min-height: calc(100dvh - var(--anchor-offset)); }
 }
 
 .heading {
@@ -12,3 +15,5 @@
   text-transform: uppercase;
   color: var(--fg-faint);
 }
+
+@media print { .section:last-child { min-height: 0; } }
