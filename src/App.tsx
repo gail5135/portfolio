@@ -22,8 +22,8 @@ import styles from './App.module.scss';
 const NAV_ITEMS: NavItem[] = [
   { id: 'about', label: 'About' },
   { id: 'experience', label: 'Experience' },
-  { id: 'timeline', label: 'Timeline' },
   { id: 'ai', label: 'AI' },
+  { id: 'timeline', label: 'Timeline' },
   { id: 'skills', label: 'Skills' },
   { id: 'education', label: 'Education' },
   { id: 'projects', label: 'Projects' },
@@ -54,14 +54,14 @@ export default function App() {
             )}
           </Section>
 
+          <Section id="ai" title="AI 기능 개발 및 AI 활용 경험">
+            <Prose html={ai.bodyHtml} />
+          </Section>
+
           <Section id="timeline" title="Work Timeline">
             {companies.map((company) => (
               <CompanyBlock key={company.id} company={company} />
             ))}
-          </Section>
-
-          <Section id="ai" title="AI 활용 경험">
-            <Prose html={ai.bodyHtml} />
           </Section>
 
           <Section id="skills" title="Skills">
