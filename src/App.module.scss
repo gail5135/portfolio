@@ -9,3 +9,11 @@
   flex-direction: column;
   gap: 1.25rem;
 }
+
+.timelineYears {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}

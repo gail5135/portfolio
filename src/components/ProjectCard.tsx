@@ -6,7 +6,7 @@ import styles from './ProjectCard.module.scss';
 
 export function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className={styles.project}>
+    <article id={`timeline-${project.slug}`} className={styles.project} tabIndex={-1}>
       <div className={styles.head}>
         <h4 className={styles.title}>{project.title}</h4>
         <span className={styles.period}>{project.period}</span>

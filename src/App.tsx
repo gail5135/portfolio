@@ -33,6 +33,19 @@ const NAV_ITEMS: NavItem[] = [
 
 const experiences = loadExperiences();
 const companies = loadTimeline();
+const timelineYears = Array.from(
+  companies.flatMap((company) => company.projects).reduce((years, project) => {
+    const start = project.period.match(/^(\d{4})\.(\d{1,2})/);
+    if (!start) return years;
+    const year = Number(start[1]);
+    const month = Number(start[2]);
+    const current = years.get(year);
+    if (!current || month > current.month) {
+      years.set(year, { month, slug: project.slug });
+    }
+    return years;
+  }, new Map<number, { month: number; slug: string }>()),
+).sort(([a], [b]) => b - a);
 
 export default function App() {
   return (
@@ -61,6 +74,11 @@ export default function App() {
           </Section>
 
           <Section id="timeline" title="Work Timeline">
+            <nav className={styles.timelineYears} aria-label="경력 연도별 바로가기">
+              {timelineYears.map(([year, project]) => (
+                <a key={year} href={`#timeline-${project.slug}`}>{year}</a>
+              ))}
+            </nav>
             {companies.map((company) => (
               <CompanyBlock key={company.id} company={company} />
             ))}
