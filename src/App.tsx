@@ -40,15 +40,15 @@ const timelineYears = Array.from(
 ).sort(([a], [b]) => b - a);
 
 const NAV_ITEMS: NavItem[] = [
-  { id: 'home', label: 'Home' },
-  { id: 'about', label: 'About' },
-  { id: 'experience', label: 'Experience', children: experiences.map((note) => ({ id: `experience-${note.slug}`, label: note.navLabel || note.title })) },
+  { id: 'home', label: '홈' },
+  { id: 'about', label: '소개' },
+  { id: 'experience', label: '주요 경험', children: experiences.map((note) => ({ id: `experience-${note.slug}`, label: note.navLabel || note.title })) },
   { id: 'ai', label: 'AI' },
-  { id: 'timeline', label: 'Timeline', children: timelineYears.map(([year, project]) => ({ id: `timeline-${project.slug}`, label: String(year) })) },
-  { id: 'skills', label: 'Skills' },
-  { id: 'education', label: 'Education' },
-  { id: 'activities', label: 'Activities' },
-  { id: 'projects', label: 'Projects' },
+  { id: 'timeline', label: '경력', children: timelineYears.map(([year, project]) => ({ id: `timeline-${project.slug}`, label: String(year) })) },
+  { id: 'skills', label: '기술' },
+  { id: 'education', label: '학력' },
+  { id: 'activities', label: '활동' },
+  { id: 'projects', label: '개인 프로젝트' },
 ];
 
 export default function App() {
@@ -66,14 +66,14 @@ export default function App() {
         <Hero meta={profile.meta} />
         <main id="main">
           <div id="summary" className={styles.summary} tabIndex={-1}>
-            <h2>Summary</h2>
+            <h2>요약</h2>
             <Prose html={summary.bodyHtml} />
           </div>
-          <Section id="about" title="About">
+          <Section id="about" title="소개">
             <Prose html={profile.bodyHtml} />
           </Section>
 
-          <Section id="experience" title="Work Experience">
+          <Section id="experience" title="주요 경험">
             {experiences.length > 0 && (
               <nav className={styles.sectionLinks} aria-label="경험 바로가기">
                 {experiences.map((note) => (
@@ -94,7 +94,7 @@ export default function App() {
             <Prose html={ai.bodyHtml} />
           </Section>
 
-          <Section id="timeline" title="Work Timeline">
+          <Section id="timeline" title="경력">
             <nav className={styles.sectionLinks} aria-label="경력 연도별 바로가기">
               {timelineYears.map(([year, project]) => (
                 <a key={year} href={`#timeline-${project.slug}`}>{year}</a>
@@ -106,7 +106,7 @@ export default function App() {
             ))}
           </Section>
 
-          <Section id="skills" title="Skills">
+          <Section id="skills" title="기술">
             <div className={styles.skills}>
               <div>
                 <h3 className={styles.skillHeading}>개발</h3>
@@ -119,15 +119,15 @@ export default function App() {
             </div>
           </Section>
 
-          <Section id="education" title="Education">
+          <Section id="education" title="학력">
             <Prose html={education.bodyHtml} />
           </Section>
 
-          <Section id="activities" title="Activities">
+          <Section id="activities" title="활동">
             <Prose html={activities.bodyHtml} />
           </Section>
 
-          <Section id="projects" title="Personal Projects">
+          <Section id="projects" title="개인 프로젝트">
             <Prose html={links.bodyHtml} />
           </Section>
         </main>

@@ -2,7 +2,8 @@
 company: jinhak
 title: 대학교·대학원 원서접수 서비스 개발
 period: "2020.08 – 2021.02"
-role: 개발자 사원
+role: 풀스택 개발
+stack: [ASP.NET, SQL Server, JavaScript]
 ---
 
 - 대학입시 수시, 정시, 편입학 원서접수 개발

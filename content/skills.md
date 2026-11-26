@@ -1,7 +1,10 @@
 ---
 skills:
   - React.js
+  - TypeScript
   - JavaScript
+  - Electron
+  - Vite
   - SASS
   - HTML
   - CSS

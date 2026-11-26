@@ -103,7 +103,7 @@ export function Nav({ items }: { items: NavItem[] }) {
         </button>
       </div>
       <nav id="portfolio-nav" className={`${styles.nav} ${open ? styles.open : ''}`} aria-label="포트폴리오 목차">
-        <p className={styles.caption}>ON THIS PAGE</p>
+        <p className={styles.caption}>목차</p>
         <ul>
           {items.map((item) => {
             const targetId = item.children?.[0]?.id ?? item.id;

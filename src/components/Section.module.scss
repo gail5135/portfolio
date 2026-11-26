@@ -9,10 +9,10 @@
   margin: 0 0 1.5rem;
   padding-bottom: 0.6rem;
   border-bottom: 1px solid var(--border);
-  font-size: 0.8rem;
+  /* 한글 제목이라 대문자 변환과 넓은 자간을 쓰지 않는다. 자간을 벌리면 글자가 흩어져 보인다. */
+  font-size: 0.9rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  letter-spacing: 0.02em;
   color: var(--fg-faint);
 }
 

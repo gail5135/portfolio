@@ -9,15 +9,15 @@ GitHub 웹에서 파일을 열고 연필 아이콘을 눌러 고친 뒤 커밋�
 
 | 파일 | 화면의 어디 |
 |---|---|
-| `profile.md` | 맨 위 이름·연락처, About |
-| `experience/*.md` | **Work Experience** — 인사이트, 기억에 남는 경험 |
-| `timeline/*.md` | **Work Timeline** — 프로젝트 연혁 |
+| `profile.md` | 맨 위 이름·연락처, 소개 |
+| `experience/*.md` | **주요 경험** — 인사이트, 기억에 남는 경험 |
+| `timeline/*.md` | **경력** — 프로젝트 연혁 |
 | `companies.yml` | Timeline 의 회사 이름과 재직 기간 |
 | `ai.md` | AI 활용 경험 |
-| `skills.md` | Skills, 언어 |
-| `education.md` | Education |
-| `activities.md` | Activities — 동아리 및 학생회 |
-| `links.md` | Personal Projects |
+| `skills.md` | 기술, 언어 |
+| `education.md` | 학력 |
+| `activities.md` | 활동 — 동아리 및 학생회 |
+| `links.md` | 개인 프로젝트 |
 | `cover-letter/*.md` | 화면에 없음. `yarn pdf` 의 자기소개서 본문 |
 | `private.yml` | 화면에 없음. PDF 의 전화번호 (git 제외, `private.example.yml` 을 복사해 만듦) |
 
@@ -26,7 +26,7 @@ GitHub 웹에서 파일을 열고 연필 아이콘을 눌러 고친 뒤 커밋�
 - `experience/` 는 **읽히려고 쓰는 글**입니다. 무엇을 배웠고 왜 그렇게 판단했는지.
 - `timeline/` 은 **무엇을 했는지의 목록**입니다. 사실 위주로 짧게.
 
-## Work Experience 에 글 추가하기
+## 주요 경험에 글 추가하기
 
 `experience/` 안에 `.md` 파일을 하나 만들면 끝입니다.
 
@@ -50,7 +50,7 @@ tags: [성능, Electron]
 
 `title` 만 필수입니다. `context`, `period`, `tags` 는 없으면 화면에서 빠집니다.
 
-## Work Timeline 에 프로젝트 추가하기
+## 경력에 프로젝트 추가하기
 
 `timeline/` 안에 `.md` 파일을 하나 만듭니다.
 
@@ -100,7 +100,7 @@ stack: [React, Vite]
 머리말이 깨진 파일은 그 파일만 화면에서 빠지고 나머지는 정상 동작합니다.
 빌드 로그와 브라우저 콘솔에 어떤 파일이 왜 빠졌는지 나옵니다.
 
-Experience 상단 바로가기는 각 글에서 자동 생성됩니다. `navLabel`로 짧은 이름을 지정할 수 있으며, 없으면 `title`을 사용합니다.
+주요 경험 상단 바로가기는 각 글에서 자동 생성됩니다. `navLabel`로 짧은 이름을 지정할 수 있으며, 없으면 `title`을 사용합니다.
 
 ## 흐름도 (`experience/` 의 `flow`)
 
@@ -125,7 +125,7 @@ flow:
 
 ## 경력 막대 차트
 
-Work Timeline 위의 차트는 각 연혁의 `period` 로 자동으로 그려집니다.
+경력 섹션 위의 차트는 각 연혁의 `period` 로 자동으로 그려집니다.
 연혁 본문에 경험 글 링크(`[…](#experience-…)` 또는 `#ai`)가 있으면 강조색으로 표시되고,
 누르면 그 글로 이동합니다. `"2026.09"` 처럼 한 달만 쓰면 그 달 하나로 그립니다.
 
