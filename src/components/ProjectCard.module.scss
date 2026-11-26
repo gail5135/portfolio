@@ -1,51 +1,80 @@
 .project {
-  padding: 1.5rem 0;
-  border-top: 1px solid var(--border);
-
-  &:first-child {
-    border-top: 0;
-    padding-top: 0.5rem;
-  }
+  border-bottom: 1px solid var(--border);
+  scroll-margin-top: var(--anchor-offset, 5rem);
 }
 
-.head {
-  display: flex;
-  flex-wrap: wrap;
+.summary {
+  position: relative;
+  /* summary 안에는 헤딩과 인라인 요소만 둘 수 있어서 감싸는 div 없이 grid 로 배치한다. */
+  display: grid;
+  grid-template-columns: 1fr auto;
   align-items: baseline;
-  justify-content: space-between;
-  gap: 0.25rem 1rem;
+  gap: 0.1rem 1rem;
+  padding: 0.85rem 0 0.85rem 1.5rem;
+  cursor: pointer;
+  list-style: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  /* 펼침 표시 */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 1.35rem;
+    left: 0.25rem;
+    width: 0.4rem;
+    height: 0.4rem;
+    border-right: 1.5px solid var(--fg-faint);
+    border-bottom: 1.5px solid var(--fg-faint);
+    transform: rotate(-45deg);
+    transition: transform 0.15s ease;
+  }
+
+  .project[open] > &::before {
+    transform: rotate(45deg);
+  }
+
+  &:hover .title {
+    color: var(--accent);
+  }
 }
 
 .title {
   margin: 0;
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 600;
 }
 
 .period {
-  flex: none;
   color: var(--fg-faint);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-variant-numeric: tabular-nums;
 }
 
-.role {
-  margin: 0.2rem 0 0;
+.sub {
+  grid-column: 1 / -1;
   color: var(--fg-muted);
-  font-size: 0.85rem;
-}
-
-.stack {
-  margin-top: 0.75rem;
+  font-size: 0.8rem;
 }
 
 .body {
-  margin-top: 0.9rem;
-  font-size: 0.95rem;
+  padding: 0 0 1.1rem 1.5rem;
+  font-size: 0.93rem;
 }
 
-.body > p:first-child, .body li { color: var(--fg); }
+.body > p:first-child,
+.body li {
+  color: var(--fg);
+}
+
 @media (max-width: 600px) {
-  .head { flex-direction: column; align-items: flex-start; }
-  .period { order: -1; }
+  .summary {
+    grid-template-columns: 1fr;
+  }
+
+  .period {
+    order: -1;
+  }
 }

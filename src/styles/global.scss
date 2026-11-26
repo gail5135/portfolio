@@ -126,6 +126,37 @@ h6 {
     border-radius: var(--radius);
   }
 
+  /* 전/후 비교 표 등. 좁은 화면에서는 표 안에서만 가로 스크롤 */
+  table {
+    display: block;
+    overflow-x: auto;
+    margin: 0 0 1rem;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  th,
+  td {
+    padding: 0.55rem 0.75rem;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  th {
+    color: var(--fg-muted);
+    font-size: 0.8rem;
+    font-weight: 600;
+    background: var(--bg-subtle);
+  }
+
+  /* 마지막 열(후)을 강조한다 */
+  td:last-child {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
   blockquote {
     margin: 0 0 1rem;
     padding-left: 1rem;

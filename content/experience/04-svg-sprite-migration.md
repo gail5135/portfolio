@@ -3,6 +3,15 @@ navLabel: SVG Sprite 전환
 title: 아이콘 변환 작업과 스타일 제어를 개선한 SVG Sprite 전환
 period: "2026.03 – 2026.04"
 tags: [SVG Sprite, 공통 컴포넌트, 협업 개선]
+flow:
+  - label: SVG 파일 추가
+    note: 외부 변환 도구 없이
+  - label: 빌드 전 생성
+    note: Sprite · 아이콘 이름 타입
+  - label: 공통 컴포넌트 호출
+    note: 웹뷰 · 관리자 콘솔
+  - label: 사용처에서 제어
+    note: CSS 변수 크기 · currentColor 색상
 ---
 
 > 핵심 역량: 외부 도구에 의존하던 아이콘 변환을 자동화하고, 사용처의 크기·색상 제어를 개선했습니다.

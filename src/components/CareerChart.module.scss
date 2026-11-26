@@ -1,0 +1,155 @@
+.chart {
+  margin: 0 0 2.5rem;
+  padding: 1.25rem 1.25rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) * 1.5);
+
+  @media (max-width: 40rem) {
+    padding: 1rem 0.9rem 0.6rem;
+  }
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
+  margin-bottom: 1.1rem;
+  color: var(--fg-muted);
+  font-size: 0.78rem;
+
+  span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+}
+
+.swatch {
+  display: inline-block;
+  width: 0.9rem;
+  height: 0.5rem;
+  border-radius: 2px;
+}
+
+.swatchTenure {
+  background: var(--fg-muted);
+}
+
+.swatchProject {
+  background: var(--border-strong);
+}
+
+.swatchFeatured {
+  background: var(--accent);
+}
+
+.plot {
+  position: relative;
+}
+
+.grid {
+  position: absolute;
+  inset: 0 0 1.4rem;
+  pointer-events: none;
+}
+
+.gridLine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-left: 1px dashed var(--border);
+}
+
+.row {
+  position: relative;
+
+  & + & {
+    margin-top: 1rem;
+  }
+}
+
+.rowLabel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 0.6rem;
+  margin: 0 0 0.3rem;
+  font-size: 0.82rem;
+}
+
+.company {
+  font-weight: 600;
+}
+
+.range {
+  color: var(--fg-faint);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.track {
+  position: relative;
+  height: 0.6rem;
+}
+
+.lane {
+  height: 0.7rem;
+  margin-top: 0.25rem;
+}
+
+.tenure {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-radius: 3px;
+  background: var(--fg-muted);
+}
+
+.bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  /* 한 달짜리 프로젝트도 보이도록 */
+  min-width: 4px;
+  border-radius: 3px;
+  background: var(--border-strong);
+  /* 이어진 프로젝트끼리 한 덩어리로 보이지 않도록 양옆에 배경색 틈을 둔다 */
+  box-shadow:
+    1px 0 0 var(--bg),
+    -1px 0 0 var(--bg);
+
+  &:hover {
+    background: var(--fg-faint);
+  }
+}
+
+.featured {
+  background: var(--accent);
+
+  &:hover {
+    background: var(--accent);
+    filter: brightness(1.1);
+  }
+}
+
+.axis {
+  position: relative;
+  height: 1.4rem;
+  margin-top: 0.5rem;
+}
+
+.tick {
+  position: absolute;
+  top: 0.2rem;
+  padding-left: 0.25rem;
+  color: var(--fg-faint);
+  font-size: 0.7rem;
+  font-variant-numeric: tabular-nums;
+
+  /* 좁은 화면에서는 두 해에 한 번만 표시 */
+  @media (max-width: 30rem) {
+    &:nth-child(even) {
+      display: none;
+    }
+  }
+}

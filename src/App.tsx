@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { CareerChart } from './components/CareerChart';
 import { Chips } from './components/Chips';
 import { CompanyBlock } from './components/CompanyBlock';
 import { EmptyNote } from './components/EmptyNote';
@@ -99,6 +100,7 @@ export default function App() {
                 <a key={year} href={`#timeline-${project.slug}`}>{year}</a>
               ))}
             </nav>
+            <CareerChart companies={companies} />
             {companies.map((company) => (
               <CompanyBlock key={company.id} company={company} />
             ))}

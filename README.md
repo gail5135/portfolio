@@ -17,6 +17,7 @@ yarn install
 yarn dev        # 개발 서버
 yarn build      # 타입 검사 + 프로덕션 빌드
 yarn preview    # 빌드 결과 미리보기
+yarn pdf        # pdf/ 에 포트폴리오.pdf, 자기소개서.pdf 생성 (Chrome 필요)
 ```
 
 ## 구조
@@ -28,6 +29,9 @@ src/
   content/        파싱된 결과를 타입 붙여 조립
   components/     화면
   styles/         디자인 토큰과 전역 스타일
+  print/          PDF 전용 페이지 (사이트 빌드에는 안 들어감)
+print/            PDF 페이지의 HTML 진입점
+scripts/pdf.mjs   PDF 생성 스크립트
 ```
 
 마크다운 파서(marked)와 YAML 파서(js-yaml)는 빌드 타임에만 돌고
@@ -36,3 +40,9 @@ src/
 ## 스택
 
 Vite · React · TypeScript · SCSS Modules
+
+## PDF
+
+`yarn pdf` 는 사이트와 같은 `content/` 로 PDF 두 개를 만듭니다. 사이트에는 올라가지 않습니다.
+전화번호는 `content/private.yml` 에 두면 PDF 에만 들어갑니다
+(`content/private.example.yml` 참고, git 제외). 자기소개서는 `content/cover-letter/` 에 있습니다.

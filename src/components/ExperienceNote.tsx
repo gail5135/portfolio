@@ -1,6 +1,7 @@
 import type { ExperienceNote as Note } from '../types';
 
 import { Chips } from './Chips';
+import { Flow } from './Flow';
 import { Prose } from './Prose';
 import styles from './ExperienceNote.module.scss';
 
@@ -26,6 +27,11 @@ export function ExperienceNote({ note }: { note: Note }) {
         </div>
       )}
       <Prose html={note.bodyHtml} className={styles.body} />
+      {note.flow && (
+        <div className={styles.flow}>
+          <Flow steps={note.flow} label={`${note.title} 흐름`} />
+        </div>
+      )}
     </article>
   );
 }

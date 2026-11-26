@@ -63,9 +63,27 @@ export interface ExperienceMeta {
   context?: string;
   period?: string;
   tags?: string[];
+  /** 흐름도 단계. 없으면 그리지 않는다. */
+  flow?: FlowStep[];
 }
 
 export interface ExperienceNote extends ExperienceMeta {
   slug: string;
+  bodyHtml: string;
+}
+
+/** 흐름도의 한 단계 */
+export interface FlowStep {
+  label: string;
+  note?: string;
+}
+
+/** content/cover-letter/*.md — 자기소개서. PDF 로만 나간다. */
+export interface CoverLetter {
+  slug: string;
+  title?: string;
+  /** 지원 회사. 범용본에는 없다. */
+  company?: string;
+  position?: string;
   bodyHtml: string;
 }

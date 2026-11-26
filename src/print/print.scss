@@ -1,0 +1,298 @@
+/*
+ * PDF 전용 스타일. A4 한 장에 사이트보다 촘촘하게 들어가도록 한다.
+ * 컴포넌트가 전부 rem 기준이라 루트 글자 크기를 줄이면 전체가 함께 줄어든다.
+ */
+
+:root {
+  /* 다크모드 무시. 종이는 항상 흰색이다. */
+  color-scheme: light;
+  --bg: #fff;
+  --bg-subtle: #f5f6f8;
+  --fg: #16161a;
+  --fg-muted: #4a4a52;
+  --fg-faint: #75757e;
+  --border: #e2e2e7;
+  --border-strong: #c9c9d1;
+  --accent: #2554c7;
+  --accent-soft: #edf1fc;
+  --measure: none;
+  --radius: 6px;
+}
+
+@page {
+  size: A4;
+  margin: 13mm 14mm 14mm;
+}
+
+html {
+  font-size: 12px;
+  scroll-padding-top: 0;
+}
+
+body {
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* 화면에서 미리 볼 때도 종이 폭으로 보이게 */
+@media screen {
+  body {
+    background: #e9e9ee;
+  }
+
+  .print-doc {
+    max-width: 210mm;
+    margin: 2rem auto;
+    padding: 13mm 14mm;
+    background: #fff;
+    box-shadow: 0 2px 12px rgb(0 0 0 / 0.08);
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ── 머리말 ── */
+
+.print-header {
+  margin-bottom: 1.6rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 2px solid var(--fg);
+}
+
+.print-header__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2rem;
+}
+
+.print-header__doc {
+  margin: 0 0 0.2rem;
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.print-header__name {
+  margin: 0;
+  font-size: 2.1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.print-header__title {
+  margin: 0.25rem 0 0;
+  color: var(--fg-muted);
+}
+
+.print-header__contact {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--fg-muted);
+  font-size: 0.92rem;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.print-header__alt {
+  margin-left: 0.6rem;
+  color: var(--fg-faint);
+  font-size: 0.5em;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+/* summary.md 의 핵심 역량 3개. 사이트용 바로가기 링크는 종이에서 참고 표시로만 남긴다. */
+.print-summary {
+  margin-top: 1rem;
+
+  ul {
+    margin: 0;
+  }
+
+  li {
+    margin-bottom: 0.45rem;
+    color: var(--fg);
+  }
+
+  li::marker {
+    color: var(--accent);
+  }
+
+  a {
+    color: var(--fg-faint);
+    font-size: 0.88em;
+  }
+}
+
+/* 문서 안 바로가기 링크(#…)는 종이에서 누를 수 없으니 흐리게 */
+.print-doc a[href^='#'] {
+  color: var(--fg-faint);
+}
+
+.print-ai h3 {
+  margin: 1.2rem 0 0.4rem;
+  font-size: 1.05rem;
+  break-after: avoid;
+}
+
+/* ── 섹션 ── */
+
+.print-section {
+  margin-bottom: 1.8rem;
+
+  > h2 {
+    margin: 0 0 0.9rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid var(--border-strong);
+    font-size: 1.15rem;
+    font-weight: 700;
+    break-after: avoid;
+  }
+}
+
+.print-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+
+  h3,
+  h4 {
+    margin: 0;
+    break-after: avoid;
+  }
+
+  > span {
+    flex: none;
+  }
+}
+
+.print-muted {
+  margin: 0.1rem 0 0;
+  color: var(--fg-faint);
+  font-size: 0.88rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.print-company {
+  & + & {
+    margin-top: 1.6rem;
+  }
+
+  h3 {
+    font-size: 1.15rem;
+  }
+}
+
+.print-project {
+  margin-top: 0.85rem;
+  padding-left: 0.8rem;
+  border-left: 2px solid var(--border);
+  break-inside: avoid;
+
+  h4 {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .prose {
+    margin-top: 0.3rem;
+    font-size: 0.92rem;
+  }
+
+  .prose p {
+    margin-bottom: 0.3rem;
+  }
+
+  .prose ul {
+    margin-bottom: 0;
+  }
+
+  .prose li {
+    margin-bottom: 0.05rem;
+    line-height: 1.5;
+  }
+}
+
+.print-tag {
+  margin-left: 0.5rem;
+  padding: 0.05rem 0.4rem;
+  border-radius: 3px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  vertical-align: 0.1em;
+}
+
+.print-gap {
+  margin-top: 0.8rem;
+}
+
+/* 종이에서는 링크 주소가 보여야 한다 */
+.print-links a[href^='http']::after {
+  content: ' — ' attr(href);
+  color: var(--fg-faint);
+  font-size: 0.85em;
+}
+
+/* ── 재사용하는 화면 컴포넌트를 종이에 맞게 ── */
+
+/* 경험 글은 쪽을 넘어가도 된다. 통째로 넘기면 빈 공간이 크게 생긴다. */
+.print-doc article {
+  break-inside: auto;
+}
+
+/* 본문의 접기(<details>)는 펼친 상태로, 테두리 없이 이어 보이게 */
+.print-doc .prose details {
+  margin-top: 0.3rem;
+  padding: 0;
+  border: 0;
+
+  summary {
+    display: none;
+  }
+}
+
+.print-doc figure,
+.print-doc ol,
+.print-doc blockquote,
+.print-doc table,
+.print-doc li {
+  break-inside: avoid;
+}
+
+/* ── 자기소개서 ── */
+
+.print-letter {
+  html:has(&) {
+    font-size: 13.5px;
+  }
+
+  > .prose {
+    h2 {
+      margin: 1.8rem 0 0.6rem;
+      font-size: 1.15rem;
+      font-weight: 700;
+      break-after: avoid;
+    }
+
+    h2:first-child {
+      margin-top: 0;
+    }
+
+    p {
+      margin-bottom: 0.8rem;
+      line-height: 1.85;
+    }
+  }
+}

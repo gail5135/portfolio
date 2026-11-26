@@ -12,9 +12,11 @@ import linksDoc from '/content/links.md';
 import type {
   Company,
   CompanyMeta,
+  CoverLetter,
   Doc,
   ExperienceMeta,
   ExperienceNote,
+  FlowStep,
   ProfileMeta,
   Project,
   ProjectMeta,
@@ -29,6 +31,10 @@ const timelineModules = import.meta.glob('/content/timeline/*.md', {
 }) as Record<string, { default: Doc }>;
 
 const experienceModules = import.meta.glob('/content/experience/*.md', {
+  eager: true,
+}) as Record<string, { default: Doc }>;
+
+const coverLetterModules = import.meta.glob('/content/cover-letter/*.md', {
   eager: true,
 }) as Record<string, { default: Doc }>;
 
@@ -86,8 +92,21 @@ export function loadExperiences(): ExperienceNote[] {
         console.warn(`[content] ${path} 의 frontmatter 에 title 이 없어 건너뜁니다`);
         return [];
       }
-      return [{ ...meta, slug: doc.slug, bodyHtml: doc.bodyHtml }];
+      return [{ ...meta, flow: parseFlow(meta.flow), slug: doc.slug, bodyHtml: doc.bodyHtml }];
     });
+}
+
+function parseFlow(raw: unknown): FlowStep[] | undefined {
+  if (!Array.isArray(raw)) return undefined;
+  const steps = raw.flatMap((step): FlowStep[] => {
+    if (typeof step === 'string') return [{ label: step }];
+    if (step && typeof step === 'object' && 'label' in step) {
+      const { label, note } = step as { label: unknown; note?: unknown };
+      return [{ label: String(label), note: note === undefined ? undefined : String(note) }];
+    }
+    return [];
+  });
+  return steps.length > 0 ? steps : undefined;
 }
 
 /**
@@ -112,4 +131,22 @@ export function loadTimeline(): Company[] {
   }
 
   return companies.filter((company) => company.projects.length > 0);
+}
+
+/** 자기소개서 (PDF 전용). 파일 이름이 _ 로 시작하면 예시로 보고 건너뛴다. */
+export function loadCoverLetters(): CoverLetter[] {
+  return Object.entries(coverLetterModules)
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([, module]) => module.default)
+    .filter((doc) => !doc.slug.startsWith('_'))
+    .map((doc) => {
+      const meta = doc.meta as Partial<CoverLetter>;
+      return {
+        slug: doc.slug,
+        title: meta.title,
+        company: meta.company,
+        position: meta.position,
+        bodyHtml: doc.bodyHtml,
+      };
+    });
 }

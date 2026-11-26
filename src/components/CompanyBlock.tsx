@@ -24,7 +24,7 @@ export function CompanyBlock({ company }: { company: Company }) {
       {meta && <p className={styles.meta}>{meta}</p>}
       <div className={styles.projects}>
         {company.projects.map((project) => (
-          <ProjectCard key={project.slug} project={project} />
+          <ProjectCard key={project.slug} project={project} companyPosition={company.position} />
         ))}
       </div>
     </section>

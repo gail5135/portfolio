@@ -21,3 +21,7 @@ dist
 
 # macOS
 .DS_Store
+
+# PDF 출력물과 공개하면 안 되는 연락처. yarn pdf 가 쓴다.
+pdf
+content/private.yml

@@ -18,6 +18,8 @@ GitHub 웹에서 파일을 열고 연필 아이콘을 눌러 고친 뒤 커밋�
 | `education.md` | Education |
 | `activities.md` | Activities — 동아리 및 학생회 |
 | `links.md` | Personal Projects |
+| `cover-letter/*.md` | 화면에 없음. `yarn pdf` 의 자기소개서 본문 |
+| `private.yml` | 화면에 없음. PDF 의 전화번호 (git 제외, `private.example.yml` 을 복사해 만듦) |
 
 두 폴더의 차이:
 
@@ -99,3 +101,37 @@ stack: [React, Vite]
 빌드 로그와 브라우저 콘솔에 어떤 파일이 왜 빠졌는지 나옵니다.
 
 Experience 상단 바로가기는 각 글에서 자동 생성됩니다. `navLabel`로 짧은 이름을 지정할 수 있으며, 없으면 `title`을 사용합니다.
+
+## 흐름도 (`experience/` 의 `flow`)
+
+경험 글 끝에 단계를 화살표로 이은 그림이 나옵니다. 넣지 않으면 그리지 않습니다.
+
+```yaml
+flow:
+  - label: SVG 파일 추가
+    note: 외부 변환 도구 없이   # 없어도 됩니다
+  - label: 빌드 전 생성
+```
+
+## 표
+
+마크다운 표를 그대로 쓰면 됩니다. 마지막 열이 강조색이라 전/후 비교에 쓰기 좋습니다.
+
+```markdown
+| 항목 | 전 | 후 |
+|---|---|---|
+| 아이콘 추가 | 외부 도구로 웹 폰트 변환 | SVG 파일만 추가 |
+```
+
+## 경력 막대 차트
+
+Work Timeline 위의 차트는 각 연혁의 `period` 로 자동으로 그려집니다.
+연혁 본문에 경험 글 링크(`[…](#experience-…)` 또는 `#ai`)가 있으면 강조색으로 표시되고,
+누르면 그 글로 이동합니다. `"2026.09"` 처럼 한 달만 쓰면 그 달 하나로 그립니다.
+
+## 자기소개서 (`cover-letter/`)
+
+- `default.md` → `pdf/자기소개서.pdf` (범용본)
+- 회사마다 문항이 다르면 파일을 하나 더 만듭니다. `toss.md` → `pdf/자기소개서-toss.pdf`
+- `_` 로 시작하는 파일은 예시라 PDF 를 만들지 않습니다. `_example-company.md` 를 복사해서 쓰세요.
+- `##` 소제목이 항목 제목이 됩니다.

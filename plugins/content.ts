@@ -21,7 +21,12 @@ export function contentPlugin(): Plugin {
       if (file.endsWith('.md')) {
         const slug = slugFromPath(file);
         // Timeline 은 프로젝트 제목이 h4 라서 본문 헤딩을 한 단계 더 내린다.
-        const headingOffset = file.includes('/content/timeline/') ? 3 : 2;
+        // cover-letter 는 PDF 에서 문서 제목(h1) 바로 아래라 ## 를 h2 로 둔다.
+        const headingOffset = file.includes('/content/timeline/')
+          ? 3
+          : file.includes('/content/cover-letter/')
+            ? 0
+            : 2;
         try {
           const { meta, body } = splitFrontmatter(code);
           const doc = { slug, meta, bodyHtml: renderMarkdown(body, headingOffset) };
